@@ -1,0 +1,465 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f4f7fb;
+  color: #1e293b;
+}
+
+.sidebar {
+  width: 255px;
+  height: 100vh;
+  background: #102b46;
+  color: white;
+  position: fixed;
+  padding: 25px 18px;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 45px;
+}
+
+.brand h2 {
+  font-size: 17px;
+}
+
+.brand small {
+  color: #b8c9da;
+  font-size: 11px;
+}
+
+.brand-icon {
+  background: #19a67a;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.menu-title {
+  color: #91a9c0;
+  font-size: 11px;
+  margin: 0 0 15px 10px;
+}
+
+.nav {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 7px;
+  border: none;
+  background: transparent;
+  color: #cbd8e5;
+  text-align: left;
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.nav:hover,
+.nav.active {
+  background: #1b4665;
+  color: white;
+}
+
+.sidebar-bottom {
+  margin-top: auto;
+  font-size: 11px;
+  color: #b8c9da;
+  line-height: 2;
+}
+
+.main {
+  margin-left: 255px;
+  min-height: 100vh;
+}
+
+.topbar {
+  background: white;
+  padding: 18px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e5eaf0;
+}
+
+.topbar h3 {
+  font-size: 18px;
+}
+
+.topbar small {
+  display: block;
+  color: #8290a0;
+  margin-top: 5px;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #d9f4e9;
+  color: #16835f;
+  font-weight: bold;
+}
+
+.content {
+  padding: 28px;
+  max-width: 1500px;
+  margin: auto;
+}
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+.welcome {
+  background: linear-gradient(120deg, #123b5b, #137c70);
+  padding: 35px;
+  color: white;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.welcome span {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #b6e7d9;
+}
+
+.welcome h1 {
+  margin: 12px 0;
+  font-size: 27px;
+}
+
+.welcome p {
+  color: #d7e8ed;
+  font-size: 14px;
+}
+
+.welcome-icon {
+  font-size: 65px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.stat, .panel {
+  background: white;
+  border-radius: 12px;
+  padding: 22px;
+  border: 1px solid #e7edf2;
+}
+
+.stat span {
+  color: #788797;
+  font-size: 12px;
+}
+
+.stat h2 {
+  font-size: 29px;
+  margin: 12px 0;
+  color: #167b68;
+}
+
+.stat small {
+  color: #9aa5b1;
+}
+
+.panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.panel-heading p,
+.section-heading p {
+  color: #8390a0;
+  margin-top: 7px;
+  font-size: 13px;
+}
+
+.section-heading {
+  margin-bottom: 23px;
+}
+
+.section-heading h1 {
+  font-size: 25px;
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.course-card {
+  background: white;
+  padding: 20px;
+  border: 1px solid #e6ebf0;
+  border-radius: 12px;
+  transition: .2s;
+}
+
+.course-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px #102b4610;
+}
+
+.course-card h3 {
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+.course-card p {
+  font-size: 12px;
+  color: #748294;
+  line-height: 1.8;
+}
+
+.course-number {
+  color: #16836b;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.primary {
+  background: #14856c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 11px 17px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.primary:hover {
+  background: #106d59;
+}
+
+.full {
+  width: 100%;
+  margin-top: 20px;
+  padding: 14px;
+}
+
+.search, input, select, textarea {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #dce4eb;
+  border-radius: 8px;
+  margin: 9px 0 18px;
+  outline: none;
+  background: white;
+  color: #25374a;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #14856c;
+}
+
+label {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+textarea {
+  min-height: 85px;
+  resize: vertical;
+}
+
+.course-info {
+  padding: 15px;
+  background: #eef8f5;
+  border-radius: 9px;
+  margin: 5px 0 20px;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 650px;
+  font-size: 12px;
+}
+
+th, td {
+  text-align: left;
+  padding: 14px 12px;
+  border-bottom: 1px solid #e9edf1;
+}
+
+th {
+  background: #f4f8f7;
+  color: #526578;
+}
+
+.status {
+  padding: 6px 9px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.Hadir {
+  background: #dcfce9;
+  color: #16834e;
+}
+
+.Izin {
+  background: #e0efff;
+  color: #2463ad;
+}
+
+.Sakit {
+  background: #fff2d9;
+  color: #a66a0b;
+}
+
+.Alpa {
+  background: #ffe3e3;
+  color: #bd3535;
+}
+
+.delete-btn {
+  border: none;
+  background: #fee2e2;
+  color: #bd3535;
+  padding: 7px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.menu-toggle {
+  display: none;
+  border: none;
+  background: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+footer {
+  padding: 20px;
+  text-align: center;
+  font-size: 11px;
+  color: #929eaa;
+}
+
+@media(max-width: 1050px) {
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .course-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(max-width: 700px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: .3s;
+  }
+
+  .sidebar.show {
+    transform: translateX(0);
+  }
+
+  .main {
+    margin-left: 0;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .topbar {
+    padding: 15px;
+    gap: 10px;
+  }
+
+  .content {
+    padding: 15px;
+  }
+
+  .stats, .course-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .welcome {
+    padding: 24px;
+  }
+
+  .welcome h1 {
+    font-size: 21px;
+  }
+
+  .welcome-icon {
+    font-size: 40px;
+  }
+
+  .user {
+    font-size: 10px;
+  }
+
+  .panel {
+    padding: 15px;
+  }
+}
+
+@media print {
+  .sidebar, .topbar, footer, .primary {
+    display: none !important;
+  }
+
+  .main {
+    margin: 0;
+  }
+
+  .page {
+    display: none !important;
+  }
+
+  #rekap {
+    display: block !important;
+  }
+}

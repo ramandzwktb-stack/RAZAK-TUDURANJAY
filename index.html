@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Absensi Mahasiswa ITP B</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="sidebar" id="sidebar">
+  <div class="brand">
+    <div class="brand-icon">A</div>
+    <div>
+      <h2>ABSENSI ITP</h2>
+      <small>Universitas Halu Oleo</small>
+    </div>
+  </div>
+
+  <div class="menu-title">MENU UTAMA</div>
+  <button class="nav active" data-page="dashboard">▦ Dashboard</button>
+  <button class="nav" data-page="matkul">▤ Mata Kuliah</button>
+  <button class="nav" data-page="absensi">☑ Absensi</button>
+  <button class="nav" data-page="riwayat">◷ Riwayat Absensi</button>
+  <button class="nav" data-page="rekap">▥ Rekap Kehadiran</button>
+
+  <div class="sidebar-bottom">
+    <small>TA 2026/2027</small>
+    <p>ITP KELAS B • ANGKATAN 2026</p>
+  </div>
+</div>
+
+<main class="main">
+  <header class="topbar">
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <div>
+      <h3 id="pageTitle">Dashboard</h3>
+      <small>Ilmu dan Teknologi Pangan</small>
+    </div>
+    <div class="user">
+      <div class="avatar">R</div>
+      <div>
+        <b>Ketua Kelas</b>
+        <small>ITP B</small>
+      </div>
+    </div>
+  </header>
+
+  <section class="content">
+
+    <div id="dashboard" class="page active">
+      <div class="welcome">
+        <div>
+          <span>SELAMAT DATANG</span>
+          <h1>Sistem Absensi ITP B</h1>
+          <p>Kelola kehadiran mahasiswa setiap mata kuliah.</p>
+        </div>
+        <div class="welcome-icon">📚</div>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <span>Total Mata Kuliah</span>
+          <h2 id="totalMatkul">9</h2>
+          <small>Semester 1</small>
+        </div>
+        <div class="stat">
+          <span>Total Pertemuan</span>
+          <h2 id="totalPertemuan">0</h2>
+          <small>Semua mata kuliah</small>
+        </div>
+        <div class="stat">
+          <span>Total Kehadiran</span>
+          <h2 id="totalHadir">0</h2>
+          <small>Data tersimpan</small>
+        </div>
+        <div class="stat">
+          <span>Persentase Hadir</span>
+          <h2 id="persentase">0%</h2>
+          <small>Keseluruhan</small>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-heading">
+          <div>
+            <h2>Daftar Mata Kuliah</h2>
+            <p>Semester Ganjil 2026/2027</p>
+          </div>
+          <button class="primary" onclick="showPage('matkul')">
+            Lihat Semua
+          </button>
+        </div>
+        <div id="dashboardCourses" class="course-grid"></div>
+      </div>
+    </div>
+
+    <div id="matkul" class="page">
+      <div class="section-heading">
+        <h1>Daftar Mata Kuliah</h1>
+        <p>Informasi dosen pengampu ITP Kelas B.</p>
+      </div>
+      <input id="searchCourse" class="search"
+        placeholder="Cari mata kuliah atau nama dosen..."
+        oninput="renderCourses()">
+      <div id="allCourses" class="course-grid"></div>
+    </div>
+
+    <div id="absensi" class="page">
+      <div class="section-heading">
+        <h1>Input Absensi</h1>
+        <p>Catat kehadiran berdasarkan mata kuliah dan pertemuan.</p>
+      </div>
+
+      <div class="panel">
+        <label>Mata Kuliah</label>
+        <select id="courseSelect" onchange="updateCourseInfo()"></select>
+
+        <div id="courseInfo" class="course-info"></div>
+
+        <label>Tanggal Pertemuan</label>
+        <input type="date" id="attendanceDate">
+
+        <label>Pertemuan Ke-</label>
+        <input type="number" id="meetingNumber" min="1" max="30" value="1">
+
+        <label>Status Kehadiran</label>
+        <select id="attendanceStatus">
+          <option value="Hadir">Hadir</option>
+          <option value="Izin">Izin</option>
+          <option value="Sakit">Sakit</option>
+          <option value="Alpa">Alpa</option>
+        </select>
+
+        <label>Catatan</label>
+        <textarea id="attendanceNote"
+          placeholder="Catatan tambahan (opsional)"></textarea>
+
+        <button class="primary full" onclick="saveAttendance()">
+          Simpan Absensi
+        </button>
+      </div>
+    </div>
+
+    <div id="riwayat" class="page">
+      <div class="section-heading">
+        <h1>Riwayat Absensi</h1>
+        <p>Semua catatan kehadiran yang telah disimpan.</p>
+      </div>
+      <div class="panel">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Tanggal</th>
+                <th>Mata Kuliah</th>
+                <th>Pertemuan</th>
+                <th>Status</th>
+                <th>Catatan</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="historyTable"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div id="rekap" class="page">
+      <div class="section-heading">
+        <h1>Rekap Kehadiran</h1>
+        <p>Persentase kehadiran berdasarkan mata kuliah.</p>
+      </div>
+      <div class="panel">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Mata Kuliah</th>
+                <th>Pertemuan</th>
+                <th>Hadir</th>
+                <th>Izin</th>
+                <th>Sakit</th>
+                <th>Alpa</th>
+                <th>Persentase</th>
+              </tr>
+            </thead>
+            <tbody id="recapTable"></tbody>
+          </table>
+        </div>
+        <button class="primary" onclick="window.print()">
+          Cetak Rekap
+        </button>
+      </div>
+    </div>
+
+  </section>
+  <footer>© 2026 Sistem Absensi ITP B | Universitas Halu Oleo</footer>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
